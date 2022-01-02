@@ -10,7 +10,7 @@ int fli(vector<int> a, int idx, int x){
 	int liina = fli(a, idx+1, x);
 	if(liina==-1){
 		if(a[idx]==x){
-			return idx;
+			return idx; 
 		}
 		else{
 			return -1;

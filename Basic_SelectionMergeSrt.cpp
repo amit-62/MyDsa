@@ -6,7 +6,7 @@ const int N=1e7+10;
 int a[N];
 
 void merge(int l, int r, int mid){
-	cout<<"index"<<l<<" "<<r<<" "<<mid<<endl;
+	// cout<<"index"<<l<<" "<<r<<" "<<mid<<endl;
 	int l_sz= mid-l+1;
 	int L[l_sz+1];
 	int r_sz = r-mid;
@@ -67,7 +67,7 @@ int main()
 		cin>>a[i];
 	}
 	
-	//code for merge sort
+	//code for selection sort
 	/*for(int i=0; i<n; ++i){
 		int min_index=i;
 		for(int j=i; j<n; ++j){
