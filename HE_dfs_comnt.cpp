@@ -1,22 +1,21 @@
-//Basic of Graph - Depth first search.
-//It state that trasverse to last element of vetices and go on till the
-//last child. Whenever we encounter any visited element just skip it.
+//https://www.hackerearth.com/problem/algorithm/connected-components-in-a-graph/
+//to find connected component
 
 #include<bits/stdc++.h>
 using namespace std;
 const int N=1e6+10;
 vector<int> graph[N];
 bool vis[N];
+vector<vector<int>> cc;
+vector<int> current_cc;
 
 void dfs(int v){
 	//take action on vertex after entering the vertex
-	cout<<v<<endl;
 	vis[v]=true;
+	current_cc.push_back(v);
 	for(auto child:graph[v]){
 		// take action on child before entering child node
-		// cout<<"p "<<v<<" c "<<child<<endl;
 		if(vis[child]) continue;
-		cout<<"p "<<v<<" c "<<child<<endl;
 		dfs(child);
 		//take action on child before exiting child node
 	}
@@ -34,7 +33,26 @@ int main()
 		graph[v2].push_back(v1);
 		
 	}
-	dfs(1);
+	int c=0;
+
+	for(int i=1; i<=n; i++){
+		if(vis[i]) continue;
+		current_cc.clear();
+		dfs(i);
+		cc.push_back(current_cc);
+		c++;
+	}
+
+	cout<<c<<endl;
+
+	for(auto c_v:cc){
+		for(auto it:c_v){
+			cout<<it<<" ";
+		}
+		cout<<endl;
+	}
+
+	// dfs(1);
 
 	return 0;
 }

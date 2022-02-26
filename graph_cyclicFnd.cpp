@@ -1,6 +1,4 @@
-//Basic of Graph - Depth first search.
-//It state that trasverse to last element of vetices and go on till the
-//last child. Whenever we encounter any visited element just skip it.
+//Finding if Cyclic..
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -8,19 +6,21 @@ const int N=1e6+10;
 vector<int> graph[N];
 bool vis[N];
 
-void dfs(int v){
+bool dfs(int vertex, int parent){
 	//take action on vertex after entering the vertex
-	cout<<v<<endl;
-	vis[v]=true;
-	for(auto child:graph[v]){
+	// cout<<vertex<<endl;
+	vis[vertex]=true;
+	bool ifLoopExist=false;
+	for(auto child:graph[vertex]){
 		// take action on child before entering child node
+		if(vis[child] && child==parent) continue;
+		if(vis[child]) return true;
 		// cout<<"p "<<v<<" c "<<child<<endl;
-		if(vis[child]) continue;
-		cout<<"p "<<v<<" c "<<child<<endl;
-		dfs(child);
+		ifLoopExist |= dfs(child, vertex);
 		//take action on child before exiting child node
 	}
 	//take action on vertex before exiting the vertex
+	return ifLoopExist;
 }
 
 int main()
@@ -34,7 +34,12 @@ int main()
 		graph[v2].push_back(v1);
 		
 	}
-	dfs(1);
-
+	bool ifLoopExist=false;
+	for(int i=1; i<=n; i++){
+		if(vis[i]) continue;
+		ifLoopExist|= dfs(i, 0);
+		if(ifLoopExist) break;
+	}
+	cout<<ifLoopExist;
 	return 0;
 }
