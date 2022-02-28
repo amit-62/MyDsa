@@ -8,7 +8,7 @@ void dfs(int i, int j, vector<vector<int>> &grid){
 	int c=grid[0].size();
 	if(i<0 || j<0) return;
 	if(i>=r || j>=c) return;
-	if(grid[i][j] != 1) return;
+	if(grid[i][j] != initialColor) return;
 
 	grid[i][j]=2;
 
