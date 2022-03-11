@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/network-delay-time/
+//Dijkstra algorithm applied
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -6,9 +7,9 @@ const int N=1e5+10, INF=1e9+10;
 
 
 int dijkstra(int source, int n, vector<pair<int,int>> g[N]){
-	vector<int> vis(N,0);
-	vector<int> dist(N,INF);
-	set<pair<int,int>> st;
+	vector<int> vis(N,0);   //to mark visited to vertex which has trasversed all its child
+	vector<int> dist(N,INF);   //to store distance
+	set<pair<int,int>> st;		// using set because it orders itself
 
 	st.insert({0,source});
 	dist[source]=0;
@@ -17,7 +18,7 @@ int dijkstra(int source, int n, vector<pair<int,int>> g[N]){
 		auto node = *st.begin();
 		int v=node.second;
 		int dist_v=node.first;
-		st.erase(st.begin());
+		st.erase(st.begin());  //removing first element
 		if(vis[v]) continue;
 		vis[v]=1;
 
@@ -26,7 +27,7 @@ int dijkstra(int source, int n, vector<pair<int,int>> g[N]){
 			int child_wt= child.second;
 			if(dist[child_v]>dist[v]+child_wt){
 				dist[child_v]=dist[v]+child_wt;
-				st.insert({dist[child_v],child_v});
+				st.insert({dist[child_v],child_v});  //if distance is less then previous distance store new one
 			}
 
 		}

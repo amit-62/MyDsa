@@ -1,4 +1,5 @@
-// A hello world program in C++
+// calculating no. of movement to reach destination 
+// using bfs.. https://www.spoj.com/problems/NAKANJ/
 
 #include<bits/stdc++.h>
 using namespace std;

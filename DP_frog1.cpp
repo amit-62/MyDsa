@@ -9,7 +9,7 @@ int dp[N];
 
 int func(int i){
 	if(i==0) return 0;
-	if(dp[i]!=-1) return dp[i];
+	if(dp[i]!=-1) return dp[i]; //dynamic approach
 	int cost=INT_MAX;
 	//brute force approach
 	cost = min(cost, func(i-1)+abs(height[i]-height[i-1]));

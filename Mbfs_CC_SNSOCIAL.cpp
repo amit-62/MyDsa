@@ -1,4 +1,6 @@
 // https://www.codechef.com/SNCKPB17/problems/SNSOCIAL/
+//Multi source BFS it is used ti trasverse graph simultainuasly from multiple
+//node. WAys- First push all the node in queue check through edges..
 
 #include<bits/stdc++.h>
 using namespace std;
