@@ -22,7 +22,7 @@ int calcKth(int n){
 
 	}
 	return dp[n_org]=cnt;
-}
+} 
 
 int getKth(int lo, int hi, int k) {
 	vector<pair<int, int>> v;
